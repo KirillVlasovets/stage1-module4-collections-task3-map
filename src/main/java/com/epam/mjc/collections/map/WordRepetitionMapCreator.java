@@ -5,7 +5,13 @@ import java.util.Map;
 
 public class WordRepetitionMapCreator {
     public Map<String, Integer> createWordRepetitionMap(String sentence) {
-        var sentenceArr = sentence.toLowerCase().split("\\s");
+        if (sentence.length() == 0) {
+            return new HashMap<>();
+        }
+        var sentenceArr = sentence.toLowerCase()
+                .replace(",", "")
+                .replace(".", "")
+                .split("\\s");
         Map<String, Integer> ans = new HashMap<>();
         for (var word : sentenceArr) {
             if (ans.containsKey(word)) {
